@@ -1,35 +1,59 @@
 package com.example.demo.uce.funcionalidad;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+@Entity
+@Table(name="ciudadano_p")
 public class Ciudadano {
-	private String nombreCompleto;
-	private String ciudad;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_ciud")
+	@SequenceGenerator(name = "ciud_sec", sequenceName = "ciud_sec", allocationSize = 1)
+	@Column(name = "ciud_id")
+	private Integer id;
+	@Column(name = "ciud_nombre")
+	private String nombre;
+	@Column(name = "ciud_apellido")
+	private String apellido;
+	@Column(name = "ciud_fecha_nacimiento")
+	private LocalDateTime fecha_nacimiento;
 	@Override
 	public String toString() {
-		return "Ciudadano [nombreCompleto=" + nombreCompleto + ", ciudad=" + ciudad + "]";
+		return "Ciudadano [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", fecha_nacimiento="
+				+ fecha_nacimiento + "]";
 	}
-	/**
-	 * @return the nombreCompleto
-	 */
-	public String getNombreCompleto() {
-		return nombreCompleto;
+	public Integer getId() {
+		return id;
 	}
-	/**
-	 * @param nombreCompleto the nombreCompleto to set
-	 */
-	public void setNombreCompleto(String nombreCompleto) {
-		this.nombreCompleto = nombreCompleto;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	/**
-	 * @return the ciudad
-	 */
-	public String getCiudad() {
-		return ciudad;
+	public String getNombre() {
+		return nombre;
 	}
-	/**
-	 * @param ciudad the ciudad to set
-	 */
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public LocalDateTime getFecha_nacimiento() {
+		return fecha_nacimiento;
+	}
+	public void setFecha_nacimiento(LocalDateTime fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
 	}
 	
- }
+	
+	
+	
+}
